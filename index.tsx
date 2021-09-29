@@ -23,11 +23,11 @@ interface Pulse {
 const initialProps: Props = {
     color: 'blue',
     diameter: 400,
-    duration: 1000,
+    duration: 2000,
     initialDiameter: 0,
     numPulses: 3,
     pulseStyle: {},
-    speed: 10,
+    speed: 300,
     style: {
         top: 0,
         bottom: 0,
@@ -38,7 +38,7 @@ const initialProps: Props = {
 };
 
 export const PulseAnimation = (props = initialProps) => {
-    const {numPulses} = props;
+    const {color, diameter, pulseStyle, style, duration, speed, numPulses} = props;
 
     const pulses = useMemo<Pulse[]>(
         () =>
@@ -53,8 +53,6 @@ export const PulseAnimation = (props = initialProps) => {
             }),
         [numPulses],
     );
-
-    const {color, diameter, pulseStyle, style, duration, speed} = props;
 
     useEffect(() => {
         pulses.forEach((pulse, index) => {
