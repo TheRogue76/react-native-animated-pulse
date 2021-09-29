@@ -63,22 +63,22 @@ export const PulseAnimation = (props = initialProps) => {
                     Animated.parallel([
                         Animated.timing(pulse.diameter, {
                             toValue: diameter,
-                            duration: duration,
+                            duration: speed,
                             useNativeDriver: false,
                         }),
                         Animated.timing(pulse.opacity, {
                             toValue: 0.2,
-                            duration: duration,
+                            duration: speed,
                             useNativeDriver: false,
                         }),
                         Animated.timing(pulse.borderRadius, {
                             toValue: diameter / 2,
-                            duration: duration,
+                            duration: speed,
                             useNativeDriver: false,
                         }),
                     ]),
                 ).start();
-            }, index * speed)
+            }, index * duration)
         });
     }, [diameter, duration, pulses]);
 
@@ -97,8 +97,6 @@ export const PulseAnimation = (props = initialProps) => {
                             height: pulse.diameter,
                             opacity: pulse.opacity,
                             borderRadius: pulse.borderRadius,
-                            top: pulse.centerOffset,
-                            left: pulse.centerOffset,
                         },
                         pulseStyle,
                     ]}
