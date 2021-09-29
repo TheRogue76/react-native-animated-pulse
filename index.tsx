@@ -42,7 +42,7 @@ export const PulseAnimation = (props = initialProps) => {
 
     const pulses = useMemo<Pulse[]>(
         () =>
-            Array(numPulses).map((_item, index) => {
+            Array(numPulses).fill(0).map((_item, index) => {
                 return {
                     centerOffset: 0,
                     pulseKey: index,
@@ -54,29 +54,31 @@ export const PulseAnimation = (props = initialProps) => {
         [numPulses],
     );
 
-    const {color, diameter, pulseStyle, style, duration} = props;
+    const {color, diameter, pulseStyle, style, duration, speed} = props;
 
     useEffect(() => {
-        pulses.forEach(pulse => {
-            Animated.loop(
-                Animated.parallel([
-                    Animated.timing(pulse.diameter, {
-                        toValue: diameter,
-                        duration: duration,
-                        useNativeDriver: false,
-                    }),
-                    Animated.timing(pulse.opacity, {
-                        toValue: 0.2,
-                        duration: duration,
-                        useNativeDriver: false,
-                    }),
-                    Animated.timing(pulse.borderRadius, {
-                        toValue: diameter / 2,
-                        duration: duration,
-                        useNativeDriver: false,
-                    }),
-                ]),
-            ).start();
+        pulses.forEach((pulse, index) => {
+            setTimeout(() => {
+                Animated.loop(
+                    Animated.parallel([
+                        Animated.timing(pulse.diameter, {
+                            toValue: diameter,
+                            duration: duration,
+                            useNativeDriver: false,
+                        }),
+                        Animated.timing(pulse.opacity, {
+                            toValue: 0.2,
+                            duration: duration,
+                            useNativeDriver: false,
+                        }),
+                        Animated.timing(pulse.borderRadius, {
+                            toValue: diameter / 2,
+                            duration: duration,
+                            useNativeDriver: false,
+                        }),
+                    ]),
+                ).start();
+            }, index * speed)
         });
     }, [diameter, duration, pulses]);
 
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     pulse: {
-        // position: 'absolute',
-        // flex: 1,
+        position: 'absolute',
+        flex: 1,
     },
 });
