@@ -1,0 +1,21 @@
+{
+  "name": "react-native-animated-pulse",
+  "version": "0.0.1",
+  "description": "A Pulse Component created using React-Native's Animated API",
+  "main": "index.tsx",
+  "repository": "git@github.com:TheRogue76/react-native-animated-pulse.git",
+  "keywords": [
+    "react",
+    "react-native",
+    "animation",
+    "pulse",
+    "animated",
+    "typescript"
+  ],
+  "dependencies": {
+    "react": ">=16.9.0",
+    "react-native": ">=0.60.0"
+  },
+  "author": "Parsa Nasirimehr <p.nasirimehr@gmail.com>",
+  "license": "MIT"
+}
