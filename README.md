@@ -29,7 +29,7 @@ import {PulseAnimation} from 'react-native-animated-pulse';
 function App() {
     return (
         <View style={styles.container}>
-            <Pulse color='orange' numPulses={3} diameter={400} speed={20} duration={2000} />
+            <PulseAnimation color={'#bbb'} numPulses={3} diameter={400} speed={20} duration={2000} />
         </View>
     );
 }
